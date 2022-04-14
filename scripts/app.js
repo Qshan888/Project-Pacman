@@ -91,11 +91,11 @@ function removeUltraball() {
 
 //intervall for evovled pokemon
 
-const evolvedPokemon = setInterval(() => {
+const evolvedPokemon = setTimeout(() => {
     removePokemon(pokemonPosition)
     pokemonStatus = "pokemon"
     addPokemon(pokemonPosition)
-  },6000)
+  },3000)
 
 console.log(pokemonStatus)
 console.log(ultraballPosition)
@@ -115,12 +115,16 @@ document.addEventListener('keyup', (event) => {
 
   if (key === 'ArrowLeft' && gridCount[pokemonPosition - 1].classList.contains('blank')) { // ! Left
     pokemonPosition -= 1
+    pokemonStatus = "runLeft"
   } else if (key === 'ArrowRight' && gridCount[pokemonPosition + 1].classList.contains('blank')) { // ! Right
     pokemonPosition += 1
+    pokemonStatus = "runRight"
   } else if (key === 'ArrowUp' && gridCount[pokemonPosition - width].classList.contains('blank')) { // ! Up
     pokemonPosition -= width
+    pokemonStatus = "runUp"
   } else if (key === 'ArrowDown' && gridCount[pokemonPosition + width].classList.contains('blank')) { // ! Down
     pokemonPosition += width
+    pokemonStatus = "runDown"
   }
 
   addPokemon(pokemonPosition) // ! add pikachu back at the new position
@@ -140,3 +144,7 @@ document.addEventListener('keyup', (event) => {
 
 
 })
+
+
+
+//GHOST Movements

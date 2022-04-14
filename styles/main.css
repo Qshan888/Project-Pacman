@@ -69,13 +69,45 @@ main {
   background-position: center;
 }
 
+/* Pokemon */
+
 .pokemon {
   background-image: url('../assets/pika-sprite.png');
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
-  background-color: red;
-  
+  background-color: red; 
+}
+
+.runRight {
+  background-image: url('../assets/pikachu-running.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+
+.runLeft {
+  background-image: url('../assets/pikachu-running.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  transform: rotateY(180deg);
+}
+
+.runUp {
+  background-image: url('../assets/pikachu-running.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  transform: rotate(270deg);
+}
+
+.runDown {
+  background-image: url('../assets/pikachu-running.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  transform: rotate(90deg);
 }
 
 
@@ -88,6 +120,21 @@ main {
   background-position: center;
   
 }
+
+
+
+/* Team Rocket */
+
+
+.Koffing {
+  background-image: url('../assets/Koffing.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+
+
+
 
 
 
