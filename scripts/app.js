@@ -1,6 +1,7 @@
 // Select Dom
 
 const grid = document.querySelector('.grid')
+const selectTarget = document.querySelector('#targetNumber')
 const gridCount = []
 
 //ultraball position
@@ -70,6 +71,7 @@ createGrid()
 
 let pokemonPosition = 293
 let pokemonStatus = "pokemon"
+let pokemonlives = 3
 
 
 function addPokemon() {
@@ -143,7 +145,24 @@ document.addEventListener('keyup', (event) => {
   }
 
 
+  //Ghost Case Collusion
+
+  if (pokemonPosition === KoffingPosition || pokemonPosition === ArbokPosition || pokemonPosition === MeowthPosition || pokemonPosition === WobuffetPosition) {
+    removePokemon(pokemonPosition)
+    console.log('game ended')
+    pokemonlives -= 1
+    selectTarget.innerHTML = `${pokemonlives} / 3`
+    console.log(pokemonlives)
+    
+  }
+
+
+  if (pokemonlives <= 0) {
+    alert("Game Over, Please Refresh the Page to start try again");
+  }
+
 })
+
 
 
 

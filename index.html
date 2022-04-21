@@ -6,15 +6,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script defer src="./scripts/app.js" charset="utf-8"></script> 
   <script defer src="./scripts/teamrocket.js" charset="utf-8"></script> 
+  <script defer src="./scripts/audio.js" charset="utf-8"></script> 
   <link rel="stylesheet" href="./styles/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
   <title>Pacman Game</title>
 </head>
 
 
 <body>
       
-    <header>
+    <audio src="/assets/Pokemonsong.mp3"></audio>
 
+    <header>
+      <div class="headerWhiteSpace1">
+        <img src="/assets/logo.png" alt="logo" class="logoImage">
+      </div>
+      <section class="headerSection">
+        <div class="highScore">
+          <h2>High Score</h2>
+          <h3 id="highScoreCount">XXX</h3>
+        </div>
+        <div class="playerName">
+          <h2>Player Name</h2>
+          <h3 id="playerNameInput">XXX</h3>
+        </div>
+      </section>
+      <div class="headerWhiteSpace2">
+        <button>🔇</button>
+      </div>
+      
     </header>
 
     <main class="test">
@@ -27,6 +49,13 @@
 
     <footer>
 
+      <section class="footerSection">
+        <div class="liveCounter">
+          <h2>Lives Remaining</h2>
+          <h3 id="targetNumber">3 / 3</h3>
+        </div>
+      </section>
+      
     </footer>
 
 </body>

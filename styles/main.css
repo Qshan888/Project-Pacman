@@ -7,13 +7,77 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
+  font-family: 'Poiret One';
 }
+
+/* Footer Section */
 
 header {
   flex: 10%;
-  background-color: blue;
+  background-color: #c5d5cb;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 
 }
+
+.headerSection {
+  display: flex;
+  flex-direction: row;
+  background-color: whitesmoke;
+  border: 2px solid black;
+  border-radius: 10px;
+  flex: 2;
+  
+}
+
+.highScore {
+  flex: 50%;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 0.1em;
+  justify-content: center;
+  align-items: center;
+}
+
+.playerName {
+  flex: 50%;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 0.1em;
+  margin-left: 4px;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.headerWhiteSpace1 {
+  flex: 1;
+
+}
+
+.headerWhiteSpace2 {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+}
+
+.logoImage {
+  width: 280px;
+  height: 80px;
+  border-radius: 10px;
+
+}
+
+
+
+/* Main Section */
 
 main {
   flex: 80%;
@@ -133,12 +197,68 @@ main {
   cursor: pointer;
 }
 
+.Meowth {
+  background-image: url('../assets/Meowth.webp');
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+
+.Wobuffet {
+  background-image: url('../assets/Wobbuffet.webp');
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+
+.Arbok {
+  background-image: url('../assets/arbok.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
 
 
 
-
+/* Footer Section */
 
 footer {
   flex: 10%;
-  background-color: blueviolet;
+  background-color: #c5d5cb;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.footerSection {
+  display: flex;
+  flex-direction: row;
+  width: 50vw;
+  background-color: whitesmoke;
+  border: 2px solid black;
+  border-radius: 10px;
+  
+}
+
+.liveCounter {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  line-height: 0.1em;
+  margin-left: 4px;
+  font-weight: 400;
+  
+}
+
+button {
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  background-color: rgb(47, 65, 131);
+  border-radius: 4px;
+  
+}
+
+#targetNumber {
+  color: green;
 }
