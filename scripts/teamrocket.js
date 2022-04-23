@@ -7,6 +7,7 @@ const ghostPokemons = ['Koffing', 'Arbok', 'Meowth', 'Wobuffet']
 const ghostPosition = [KoffingPosition, ArbokPosition, MeowthPosition, WobuffetPosition]
 
 
+
 //Ghost Functions
 
 function addGhost(ghost, ghostPosition) {
