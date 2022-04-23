@@ -81,6 +81,7 @@ let leftTurn = 'runLeft'
 let rightTurn = 'runRight'
 let upTurn = 'runUp'
 let downTurn = 'runDown'
+const pokeOptions = ['runLeftEvolved', 'runRightEvolved', 'runUpEvolved', 'runDownEvolved']
 
 
 function addPokemon() {
@@ -110,9 +111,10 @@ function removeUltraball() {
 
 //intervall for evovled pokemon
 
-const evolvedPokemon = setInterval(() => {
+function evolvedPokemon2() {
+  const evolvedPokemon = setInterval(() => {
     
-    if (numTimesRun === 5) {
+    if (numTimesRun === 30) {
       clearInterval(intervalId)
     } else {
       numTimesRun = numTimesRun + 1
@@ -126,7 +128,26 @@ const evolvedPokemon = setInterval(() => {
       console.log('I want this to stop after 5 times.')
     }
   },6000)
+}
 
+/*
+const evolvedPokemon = setInterval(() => {
+    
+    if (numTimesRun === 30) {
+      clearInterval(intervalId)
+    } else {
+      numTimesRun = numTimesRun + 1
+      removePokemon(pokemonPosition)
+      pokemonStatus = "pokemon"
+      leftTurn = 'runLeft'
+      rightTurn = 'runRight'
+      upTurn = 'runUp'
+      downTurn = 'runDown'
+      addPokemon(pokemonPosition)
+      console.log('I want this to stop after 5 times.')
+    }
+  },6000)
+*/
 
 
 // keymovements of Pokemon
@@ -160,6 +181,7 @@ document.addEventListener('keyup', (event) => {
 
   addPokemon(pokemonPosition) // ! add pikachu back at the new position
   removePokeball(pokemonPosition)
+  
 
 
 
@@ -171,14 +193,15 @@ document.addEventListener('keyup', (event) => {
     removePokemon(pokemonPosition)
     
     //change pokemon variables
-    pokemonStatus = "evolvedPokemon"
     leftTurn = 'runLeftEvolved'
     rightTurn = 'runRightEvolved'
     upTurn = 'runUpEvolved'
     downTurn = 'runDownEvolved'
 
+    console.log(pokemonStatus)
     addPokemon(pokemonPosition)
-    evolvedPokemon()
+    evolvedPokemon2()
+    
     
   }
 
@@ -186,15 +209,27 @@ document.addEventListener('keyup', (event) => {
   //Ghost Case Collusion
 
   if (pokemonPosition === ghostPosition[0] || pokemonPosition === ghostPosition[1] || pokemonPosition === ghostPosition[2] || pokemonPosition === ghostPosition[3]) {
-    removePokemon(pokemonPosition)
-    console.log('game ended')
-    pokemonlives -= 1
-    selectTarget.innerHTML = `${pokemonlives} / 3`
-    console.log(pokemonlives)
-    
+    if (pokeOptions.contains(pokemonStatus) && pokemonPosition === ghostPosition[0]) {
+      ghostPosition[0] = 37-width
+    }
+    else if (pokeOptions.contains(pokemonStatus) && pokemonPosition === ghostPosition[1]) {
+      ghostPosition[1] = 52-width
+    }
+    else if (pokeOptions.contains(pokemonStatus) && pokemonPosition === ghostPosition[2]) {
+      ghostPosition[2] = 289-width
+    }
+    else if (pokeOptions.contains(pokemonStatus) && pokemonPosition === ghostPosition[3]) {
+      ghostPosition[3] = 304-width
+    }
+    else {
+      removePokemon(pokemonPosition)
+      pokemonlives -= 1
+      selectTarget.innerHTML = `${pokemonlives} / 3`
+      console.log(pokemonlives)
+    }
   }
 
-
+  // Lives Lost
   if (pokemonlives <= 0) {
     alert("Game Over, try again!");
     document.location.reload()
@@ -202,6 +237,7 @@ document.addEventListener('keyup', (event) => {
 
 
 
+  // completed game
   if (pokeballCount >= 148) {
     alert("Congratulations, you have completed Level 1");
     document.location.reload()
@@ -211,7 +247,7 @@ document.addEventListener('keyup', (event) => {
 
 
 
-// Game Over
+
 
 
 
