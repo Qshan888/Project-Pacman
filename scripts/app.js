@@ -81,7 +81,7 @@ let leftTurn = 'runLeft'
 let rightTurn = 'runRight'
 let upTurn = 'runUp'
 let downTurn = 'runDown'
-const pokeOptions = ['runLeftEvolved', 'runRightEvolved', 'runUpEvolved', 'runDownEvolved']
+let evolvedStatus = false
 
 
 function addPokemon() {
@@ -114,7 +114,7 @@ function removeUltraball() {
 function evolvedPokemon2() {
   const evolvedPokemon = setInterval(() => {
     
-    if (numTimesRun === 40) {
+    if (numTimesRun === 80) {
       clearInterval(intervalId)
     } else {
       numTimesRun = numTimesRun + 1
@@ -124,9 +124,10 @@ function evolvedPokemon2() {
       rightTurn = 'runRight'
       upTurn = 'runUp'
       downTurn = 'runDown'
+      evolvedStatus = false
       addPokemon(pokemonPosition)
     }
-  },8000)
+  },10000)
 }
 
 
@@ -148,15 +149,19 @@ document.addEventListener('keyup', (event) => {
   if (key === 'ArrowLeft' && gridCount[pokemonPosition - 1].classList.contains('blank')) { // ! Left
     pokemonPosition -= 1
     pokemonStatus = leftTurn
+    console.log(evolvedStatus)
   } else if (key === 'ArrowRight' && gridCount[pokemonPosition + 1].classList.contains('blank')) { // ! Right
     pokemonPosition += 1
     pokemonStatus = rightTurn
+    console.log(evolvedStatus)
   } else if (key === 'ArrowUp' && gridCount[pokemonPosition - width].classList.contains('blank')) { // ! Up
     pokemonPosition -= width
     pokemonStatus = upTurn
+    console.log(evolvedStatus)
   } else if (key === 'ArrowDown' && gridCount[pokemonPosition + width].classList.contains('blank')) { // ! Down
     pokemonPosition += width
     pokemonStatus = downTurn
+    console.log(evolvedStatus)
   }
 
   addPokemon(pokemonPosition) // ! add pikachu back at the new position
@@ -177,10 +182,12 @@ document.addEventListener('keyup', (event) => {
     rightTurn = 'runRightEvolved'
     upTurn = 'runUpEvolved'
     downTurn = 'runDownEvolved'
+    evolvedStatus = true
 
     console.log(pokemonStatus)
     addPokemon(pokemonPosition)
     evolvedPokemon2()
+    console.log(evolvedStatus)
     
     
   }
@@ -188,12 +195,63 @@ document.addEventListener('keyup', (event) => {
 
   //Ghost Case Collusion
 
-  if (pokemonPosition === ghostPosition[0] || pokemonPosition === ghostPosition[1] || pokemonPosition === ghostPosition[2] || pokemonPosition === ghostPosition[3]) {
-    removePokemon(pokemonPosition)
-    pokemonlives -= 1
-    selectTarget.innerHTML = `${pokemonlives} / 3`
-    console.log(pokemonlives)
+  if (pokemonPosition === ghostPosition[0]) {
+    
+    if (evolvedStatus === true) {
+      removeGhost('Koffing', ghostPosition[0])
+      ghostPosition[0] = 115
+      
+    }
+    else {
+      removePokemon(pokemonPosition)
+      pokemonlives -= 1
+      selectTarget.innerHTML = `${pokemonlives} / 3`
+    }
   }
+
+  if (pokemonPosition === ghostPosition[1]) {
+    
+    if (evolvedStatus === true) {
+      removeGhost('Arbok', ghostPosition[1])
+      ghostPosition[1] = 118
+      
+    }
+    else {
+      removePokemon(pokemonPosition)
+      pokemonlives -= 1
+      selectTarget.innerHTML = `${pokemonlives} / 3`
+    }
+    
+  }
+
+  if (pokemonPosition === ghostPosition[2]) {
+    
+    if (evolvedStatus === true) {
+      removeGhost('Meowth', ghostPosition[2])
+      ghostPosition[2] = 169
+      
+    }
+    else {
+      removePokemon(pokemonPosition)
+      pokemonlives -= 1
+      selectTarget.innerHTML = `${pokemonlives} / 3`
+    }
+  }
+
+  if (pokemonPosition === ghostPosition[3]) {
+    
+    if (evolvedStatus === true) {
+      removeGhost('Wobuffet', ghostPosition[3])
+      ghostPosition[3] = 172
+      
+    }
+    else {
+      removePokemon(pokemonPosition)
+      pokemonlives -= 1
+      selectTarget.innerHTML = `${pokemonlives} / 3`
+    }
+  }
+
 
   // Lives Lost
   if (pokemonlives <= 0) {

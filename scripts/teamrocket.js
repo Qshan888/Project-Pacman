@@ -71,6 +71,7 @@ const ghostintervall = setInterval(() => {
     // Add Pokemon
     addGhost(pokemon, ghostPosition[index])
 
+
   })
 
 },800)
