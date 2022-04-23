@@ -109,12 +109,12 @@ function removeUltraball() {
 }
 
 
-//intervall for evovled pokemon
+//Function intervall for evovled pokemon
 
 function evolvedPokemon2() {
   const evolvedPokemon = setInterval(() => {
     
-    if (numTimesRun === 30) {
+    if (numTimesRun === 40) {
       clearInterval(intervalId)
     } else {
       numTimesRun = numTimesRun + 1
@@ -125,29 +125,9 @@ function evolvedPokemon2() {
       upTurn = 'runUp'
       downTurn = 'runDown'
       addPokemon(pokemonPosition)
-      console.log('I want this to stop after 5 times.')
     }
-  },6000)
+  },8000)
 }
-
-/*
-const evolvedPokemon = setInterval(() => {
-    
-    if (numTimesRun === 30) {
-      clearInterval(intervalId)
-    } else {
-      numTimesRun = numTimesRun + 1
-      removePokemon(pokemonPosition)
-      pokemonStatus = "pokemon"
-      leftTurn = 'runLeft'
-      rightTurn = 'runRight'
-      upTurn = 'runUp'
-      downTurn = 'runDown'
-      addPokemon(pokemonPosition)
-      console.log('I want this to stop after 5 times.')
-    }
-  },6000)
-*/
 
 
 // keymovements of Pokemon
@@ -209,24 +189,10 @@ document.addEventListener('keyup', (event) => {
   //Ghost Case Collusion
 
   if (pokemonPosition === ghostPosition[0] || pokemonPosition === ghostPosition[1] || pokemonPosition === ghostPosition[2] || pokemonPosition === ghostPosition[3]) {
-    if (pokeOptions.contains(pokemonStatus) && pokemonPosition === ghostPosition[0]) {
-      ghostPosition[0] = 37-width
-    }
-    else if (pokeOptions.contains(pokemonStatus) && pokemonPosition === ghostPosition[1]) {
-      ghostPosition[1] = 52-width
-    }
-    else if (pokeOptions.contains(pokemonStatus) && pokemonPosition === ghostPosition[2]) {
-      ghostPosition[2] = 289-width
-    }
-    else if (pokeOptions.contains(pokemonStatus) && pokemonPosition === ghostPosition[3]) {
-      ghostPosition[3] = 304-width
-    }
-    else {
-      removePokemon(pokemonPosition)
-      pokemonlives -= 1
-      selectTarget.innerHTML = `${pokemonlives} / 3`
-      console.log(pokemonlives)
-    }
+    removePokemon(pokemonPosition)
+    pokemonlives -= 1
+    selectTarget.innerHTML = `${pokemonlives} / 3`
+    console.log(pokemonlives)
   }
 
   // Lives Lost
